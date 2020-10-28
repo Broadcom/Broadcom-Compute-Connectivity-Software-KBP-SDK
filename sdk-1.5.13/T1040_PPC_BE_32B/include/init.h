@@ -118,6 +118,10 @@ enum kbp_prbs_polynomial {
     KBP_PRBS_58 = 6
 };
 
+
+/**
+ * type def for kbp_blackhawk_tsc_txfir_tap_enable_enum.
+ */
 #define kbp_blackhawk_tsc_txfir_tap_enable_enum blackhawk_tsc_txfir_tap_enable_enum
 
 /**
@@ -754,7 +758,7 @@ kbp_status kbp_device_pm_interface_serdes_eyescan(void *xpt, uint16_t lane_bmp);
  * @returns KBP_OK on success or an error code otherwise
  */
 
-kbp_status kbp_device_pm_interface_dump_port_regs(void *xpt_hdl, uint32_t port_id, FILE *fp);
+kbp_status kbp_device_pm_interface_dump_port_regs(void *xpt, uint32_t port_id, FILE *fp);
 
 /**
  * MDIO Read function
@@ -801,35 +805,46 @@ kbp_status kbp_device_interface_program_PHMF_FIFO(enum kbp_device_type type, str
  *
  * @param type The device type, currently Optimus Prime and Optimus Prime2 are supported
  * @param config Configuration structure initialized appropriately.
- * @param flags The device configuration flags
+ * @param port_bmp port bitmap.
  *
  * @return KBP_OK on success or an error code.
  */
 
-kbp_status kbp_device_interface_PHMF_FIFO_toggle(enum kbp_device_type type, struct kbp_device_config *config, uint32_t flags);
+kbp_status kbp_device_interface_PHMF_FIFO_toggle(enum kbp_device_type type, struct kbp_device_config *config, uint8_t port_bmp);
 
 /**
  * API to toggle TXPCS
  *
- * @param type The device type, currently Optimus Prime and Optimus Prime2 are supported
+ * @param type The device type, currently Optimus Prime and Optimus Prime2 are supported.
  * @param config Configuration structure initialized appropriately.
+ * @param port_bmp port bitmap.
  *
  * @return KBP_OK on success or an error code.
  */
 
-kbp_status kbp_device_interface_TXPCS_soft_reset_toggle(enum kbp_device_type type, struct kbp_device_config *config);
+kbp_status kbp_device_interface_TXPCS_soft_reset_toggle(enum kbp_device_type type, struct kbp_device_config *config,
+                                                        uint8_t port_bmp);
 
 /**
  * API to toggle TX & RX
  *
- * @param type The device type, currently only Optimus Prime2 is supported
  * @param config Configuration structure initialized appropriately.
  * @param flags The device configuration flags
  *
  * @return KBP_OK on success or an error code.
  */
 
-kbp_status kbp_device_interface_tx_rx_toggle(struct kbp_device_config *config, uint32_t flags);
+kbp_status kbp_device_interface_tx_rx_toggle(enum kbp_device_type type, struct kbp_device_config *config, uint32_t flags);
+
+/**
+ * API to fix device interface errors which are addressed by SDK
+ *
+ * @param type The device type, currently Optimus Prime and Optimus Prime2 are supported
+ * @param config Configuration structure initialized appropriately.
+ * @param error_counters output buffer were all error information is populated
+ *
+ * @return KBP_OK on success or an error code.
+ */
 
 kbp_status kbp_device_interface_fix_errors(enum kbp_device_type type, struct kbp_device_config *config,
                                            uint64_t *error_counters);

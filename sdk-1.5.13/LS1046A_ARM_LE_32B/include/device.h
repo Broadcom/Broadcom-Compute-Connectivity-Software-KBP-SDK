@@ -69,7 +69,7 @@ struct kbp_stats_db;
  * KBP SDK version string.
  */
 
-#define KBP_SDK_VERSION "KBP SDK 1.5.13.1"
+#define KBP_SDK_VERSION "KBP SDK 1.5.13.2"
 
 #define KBP_ERROR_LIST_VERSION (2)
 

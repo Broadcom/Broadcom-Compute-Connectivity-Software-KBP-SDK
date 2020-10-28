@@ -1,9 +1,9 @@
 /*
- * $
+ * $Id$
  * 
  * This license is set out in https://raw.githubusercontent.com/Broadcom/Broadcom-Compute-Connectivity-Software-KBP-SDK/master/Legal/LICENSE file.
  *
- * : (c) 2020 Broadcom Inc.
+ * $Copyright: (c) 2020 Broadcom Inc.
  * All Rights Reserved.$
  *
  */

@@ -61,7 +61,8 @@ enum op_complex_instruction
     KBP_OP_INSTR_UPDATE_UDA_REGION = 0x10,
     KBP_OP_INSTR_READ_UDA_REGION = 0x11,
     KBP_OP_INSTR_UDA_CHUNK_COPY = 0x12,
-    KBP_OP_INSTR_COUNTER_SCAN = 0x13
+    KBP_OP_INSTR_COUNTER_SCAN = 0x13,
+    KBP_OP_INSTR_UNROLL_IOPARAM = 0x14
 };
 
 /**
@@ -97,6 +98,18 @@ struct op_sw_dba_scan {
            uint32_t num_abs:8,          /**< number of ABs */
            uint32_t resv0:8);           /**< PAD */
     uint32_t fw_par_scan_intvl;         /**< FW Parity Scan interval */
+};
+
+/**
+ * @brief Software representation of Unroll IOPARAM complex instruction
+ */
+struct op_unroll_ioparam {
+    __EO_5(uint32_t data_length:4,      /**< DataPresentCnt */
+           uint32_t flags:4,            /**< NoDummyResp */
+           uint32_t opcode:5,           /**< Internal Opcode */
+           uint32_t unroll_ioparam:1,   /**< Flag to enable IOPARAM write unroll */
+           uint32_t resv0:18);          /**< PAD */
+    uint32_t resv1;                     /**< PAD */
 };
 
 /**

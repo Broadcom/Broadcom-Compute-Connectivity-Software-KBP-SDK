@@ -1081,6 +1081,9 @@ kbp_status kbp_dm_op_cbwcmp(struct kbp_device * device, uint8_t ltr_num, uint32_
                             const uint8_t *key, uint32_t key_len,
                             struct kbp_search_result * o_search_results);
 
+/* Custom Search Function for debug purpose */
+kbp_status kbp_dm_op_custom_cbwcmp(struct kbp_device * device);
+
 /**
  * @param device Valid device handle.
  * @param address valid address to read

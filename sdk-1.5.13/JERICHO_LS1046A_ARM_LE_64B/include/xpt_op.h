@@ -261,6 +261,7 @@ struct op_xpt {
     int32_t (*ext_mdio_write)(void *handle, int32_t chip_no, uint8_t dev, uint16_t reg, uint16_t value);
 
     FILE *debug_fp;                         /**< File to log debug dump */
+    uint8_t device_number;                  /**< Device Number */
 };
 
 #ifdef __cplusplus
